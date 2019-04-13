@@ -39,8 +39,8 @@ func init() {
 }
 
 // Cross compilation docker containers
-var dockerBase = "karalabe/xgo-base"
-var dockerDist = "karalabe/xgo-"
+// var dockerBase = "goreng/xgo:base"
+var dockerDist = "goreng/xgo:"
 
 // Command line arguments to fine tune the compilation
 var (
@@ -251,7 +251,7 @@ func compile(image string, config *ConfigFlags, flags *BuildFlags, folder string
 			for _, gopath := range strings.Split(os.Getenv("GOPATH"), string(os.PathListSeparator)) {
 				// Since docker sandboxes volumes, resolve any symlinks manually
 				sources := filepath.Join(gopath, "src")
-				filepath.Walk(sources, func(path string, info os.FileInfo, err error) error {
+				_ = filepath.Walk(sources, func(path string, info os.FileInfo, err error) error {
 					// Skip any folders that errored out
 					if err != nil {
 						log.Printf("Failed to access GOPATH element %s: %v", path, err)

@@ -3,6 +3,6 @@
 #
 # Released under the MIT license.
 
-FROM karalabe/xgo-1.12
+FROM goreng/xgo:1.12.4
 
-MAINTAINER Péter Szilágyi <peterke@gmail.com>
+LABEL MAINTAINER Péter Szilágyi <peterke@gmail.com>
