@@ -48,8 +48,8 @@ var tests = []struct {
 	args []string
 }{
 	// Tiny test cases to smoke test cross compilations
-	{"github.com/gythialy/xgo/tests/embedded_c", nil},
-	{"github.com/gythialy/xgo/tests/embedded_cpp", nil},
+	{"github.com/gythialy/xgo/tests/embedded_c", []string{"--dest", "build", "--targets", "windows/*,darwin/*,linux/*", "--pkg", "tests/embedded_c/main.go", "."}},
+	{"github.com/gythialy/xgo/tests/embedded_cpp", []string{"--dest", "build", "--targets", "windows/*,darwin/*,linux/*", "--pkg", "tests/embedded_cpp/main.go", "."}},
 	// {"github.com/gythialy/xgo/tests/mobilepkg", []string{"--targets", "android/*,ios/*",
 	// 	"-out", "mobilepkg", "--ldflags", "-w -s -X mobilepkg.Flag=success2"}},
 
