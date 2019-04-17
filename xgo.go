@@ -308,17 +308,17 @@ func compile(image string, config *ConfigFlags, flags *BuildFlags, folder string
 		"-e", "TARGETS=" + strings.Replace(strings.Join(config.Targets, " "), "*", ".", -1),
 	}
 	if usesModules {
+		fmt.Println("Enabled Go module support")
 		args = append(args, []string{"-e", "GO111MODULE=on"}...)
 		args = append(args, []string{"-v", os.Getenv("GOPATH") + ":/go"}...)
-
+		fmt.Println("mount GOPATH ", os.Getenv("GOPATH"))
 		// Map this repository to the /source folder
 		absRepository, err := filepath.Abs(config.Repository)
 		if err != nil {
 			log.Fatalf("Failed to locate requested module repository: %v.", err)
 		}
 		args = append(args, []string{"-v", absRepository + ":/source"}...)
-
-		fmt.Printf("Enabled Go module support\n")
+		fmt.Println("mount repository", absRepository)
 
 		// Check whether it has a vendor folder, and if so, use it
 		vendorPath := absRepository + "/vendor"
@@ -391,7 +391,7 @@ func resolveImportPath(path string) string {
 	if err != nil {
 		log.Fatalf("Failed to resolve import path: %v.", err)
 	}
-	return pack.ImportPath
+	return pack.Dir
 }
 
 // Executes a command synchronously, redirecting its output to stdout.
