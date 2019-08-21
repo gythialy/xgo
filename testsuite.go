@@ -29,7 +29,7 @@ var layers = []struct {
 	tag string
 	dir string
 }{
-	{"goreng/xgo:base", "base"},
+	// {"goreng/xgo:base", "base"},
 	// {"goreng/xgo:1.11.9", "go-1.11.9"},
 	// {"goreng/xgo:1.11.x", "go-1.11.x"},
 	// {"goreng/xgo:1.12.0", "go-1.12.0"},
@@ -37,13 +37,13 @@ var layers = []struct {
 	// {"goreng/xgo:1.12.2", "go-1.12.2"},
 	// {"goreng/xgo:1.12.3", "go-1.12.3"},
 	// {"goreng/xgo:1.12.4", "go-1.12.4"},
-	{"goreng/xgo:1.12.5", "go-1.12.5"},
+	// {"goreng/xgo:1.12.5", "go-1.12.5"},
 	{"goreng/xgo:1.12.6", "go-1.12.6"},
 	{"goreng/xgo:1.12.7", "go-1.12.7"},
 	{"goreng/xgo:1.12.8", "go-1.12.8"},
 	{"goreng/xgo:1.12.9", "go-1.12.9"},
 	{"goreng/xgo:1.12.x", "go-1.12.x"},
-	{"goreng/xgo:latest", "go-latest"},
+	// {"goreng/xgo:latest", "go-latest"},
 }
 
 // tests defaines all the input test cases and associated arguments the cross
