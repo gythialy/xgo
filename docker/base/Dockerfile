@@ -3,7 +3,7 @@
 #
 # Released under the MIT license.
 
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 
 LABEL MAINTAINER Péter Szilágyi <peterke@gmail.com>
 LABEL MAINTAINER Goren G <yong.gu@qlink.mobi>
@@ -46,20 +46,17 @@ RUN apt-get update && \
       ln -s /usr/include/asm-generic /usr/include/asm 
 
 # Configure the container for OSX cross compilation
-ENV OSX_SDK     MacOSX10.11.sdk
+ENV OSX_SDK     MacOSX10.13.sdk
 ENV OSX_NDK_X86 /usr/local/osx-ndk-x86
 
-RUN OSX_SDK_PATH=https://s3.dockerproject.org/darwin/v2/$OSX_SDK.tar.xz && \
-  $FETCH $OSX_SDK_PATH dd228a335194e3392f1904ce49aff1b1da26ca62       && \
+RUN OSX_SDK_PATH=https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/$OSX_SDK.tar.xz && \
+  $FETCH $OSX_SDK_PATH f8e59d8f33ae001b8983b20201466876e927371b       && \
   tar -xf `basename $OSX_SDK_PATH` && rm -f `basename $OSX_SDK_PATH`
-
-ADD patch.tar.xz $OSX_SDK/usr/include/c++
 
 RUN tar -cf - $OSX_SDK/ | xz -c - > $OSX_SDK.tar.xz && rm -rf $OSX_SDK && \
   git clone https://github.com/tpoechtrager/osxcross.git && \
   mv  $OSX_SDK.tar.xz /osxcross/tarballs/        && \
-  sed -i -e 's|-march=native||g' /osxcross/build_clang.sh /osxcross/wrapper/build.sh && \
-  UNATTENDED=yes OSX_VERSION_MIN=10.10 /osxcross/build.sh                             && \
+  UNATTENDED=1 OSX_VERSION_MIN=10.6 /osxcross/build.sh                             && \
   mv /osxcross/target $OSX_NDK_X86                                                   && \
   rm -rf /osxcross
 

@@ -36,7 +36,12 @@ var layers = []struct {
 	// {"goreng/xgo:1.12.1", "go-1.12.1"},
 	// {"goreng/xgo:1.12.2", "go-1.12.2"},
 	// {"goreng/xgo:1.12.3", "go-1.12.3"},
-	{"goreng/xgo:1.12.4", "go-1.12.4"},
+	// {"goreng/xgo:1.12.4", "go-1.12.4"},
+	{"goreng/xgo:1.12.5", "go-1.12.5"},
+	{"goreng/xgo:1.12.6", "go-1.12.6"},
+	{"goreng/xgo:1.12.7", "go-1.12.7"},
+	{"goreng/xgo:1.12.8", "go-1.12.8"},
+	{"goreng/xgo:1.12.9", "go-1.12.9"},
 	{"goreng/xgo:1.12.x", "go-1.12.x"},
 	{"goreng/xgo:latest", "go-latest"},
 }

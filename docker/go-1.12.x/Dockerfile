@@ -3,6 +3,6 @@
 #
 # Released under the MIT license.
 
-FROM goreng/xgo:1.12.4
+FROM goreng/xgo:1.12.9
 
 LABEL MAINTAINER Péter Szilágyi <peterke@gmail.com>
